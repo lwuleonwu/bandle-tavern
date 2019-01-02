@@ -13,24 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BandleTavern
+namespace BandleTavern.Wpf.Elements.WindowBanner
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Element container for Window and Banner.
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WindowBanner : UserControl
     {
-        public MainWindow()
+        public WindowBanner()
         {
             InitializeComponent();
-        }
-
-        private void ButtonOptions_Click(object sender, RoutedEventArgs e)
-        {
-            PanelOptions.Dispatcher.Invoke(() =>
-            {
-                PanelOptions.Visibility = Visibility.Visible;
-            });
         }
     }
 }

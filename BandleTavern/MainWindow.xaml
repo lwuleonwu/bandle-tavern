@@ -1,12 +1,21 @@
-﻿<Window x:Class="BandleTavern.MainWindow"
+﻿<Window xmlns:OptionsPanel="clr-namespace:BandleTavern.Wpf.Elements.OptionsPanel" 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BandleTavern"
+        xmlns:ActiveSummoner="clr-namespace:BandleTavern.Wpf.Elements.ActiveSummoner"
+        xmlns:WindowBanner="clr-namespace:BandleTavern.Wpf.Elements.WindowBanner"
+        x:Class="BandleTavern.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <WindowBanner:WindowBanner Grid.RowSpan="2"/>
+        <Button x:Name="buttonOptions" Content="Options" Margin="0,0,53,0" VerticalAlignment="Top" Click="ButtonOptions_Click" HorizontalAlignment="Right" Width="75"/>
+        <OptionsPanel:OptionsPanel x:Name="PanelOptions" Grid.RowSpan="2" Visibility="Collapsed"/>
     </Grid>
 </Window>

@@ -13,24 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BandleTavern
+namespace BandleTavern.Wpf.Elements.OptionsPanel
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for OptionsPanel.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class OptionsPanel : UserControl
     {
-        public MainWindow()
+        public OptionsPanel()
         {
             InitializeComponent();
         }
 
-        private void ButtonOptions_Click(object sender, RoutedEventArgs e)
+        private void ButtonDone_Click(object sender, RoutedEventArgs e)
         {
-            PanelOptions.Dispatcher.Invoke(() =>
-            {
-                PanelOptions.Visibility = Visibility.Visible;
-            });
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }

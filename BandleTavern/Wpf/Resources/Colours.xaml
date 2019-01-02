@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BandleTavern.Wpf.Resources">
+    
+    <!--Raw Colours-->
+    <Color x:Key="ColourTextTitle01">#efe6d1</Color>
+    <Color x:Key="ColourText01">#9a9688</Color>
+    <Color x:Key="ColourBannerMainBackground">#020a13</Color>
+    <Color x:Key="ColourInactiveOverlay">#ac000000</Color>
+    <Color x:Key="ColourWindowBorder">#453711</Color>
+
+    <!--Brushes-->
+    <SolidColorBrush x:Key="BrushTextTitle01" Color="{StaticResource ColourTextTitle01}"/>
+    <SolidColorBrush x:Key="BrushText01" Color="{StaticResource ColourText01}"/>
+    <SolidColorBrush x:Key="BrushBannerMainBackground" Color="{StaticResource ColourBannerMainBackground}"/>
+    <SolidColorBrush x:Key="BrushInactiveOverlay" Color="{StaticResource ColourInactiveOverlay}"/>
+    <SolidColorBrush x:Key="BrushWindowBorder" Color="{StaticResource ColourWindowBorder}"/>
+    
+</ResourceDictionary>

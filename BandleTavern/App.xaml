@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:BandleTavern"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <!--List of Universal Resource Dictionaries | LOADED IN ORDER-->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Wpf/Resources/Colours.xaml" />
+                <ResourceDictionary Source="Wpf/Styles/TextBlockStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

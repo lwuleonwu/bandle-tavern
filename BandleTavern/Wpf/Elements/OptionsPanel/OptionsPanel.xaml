@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="BandleTavern.Wpf.Elements.OptionsPanel.OptionsPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BandleTavern.Wpf.Elements.OptionsPanel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="{StaticResource BrushInactiveOverlay}">
+        <Border Background="{StaticResource BrushBannerMainBackground}" 
+                BorderBrush="{StaticResource BrushWindowBorder}" 
+                BorderThickness="2"
+                Margin="100,100,100,100" MaxHeight="580" MaxWidth="700"
+                >
+            <Grid Name="MainGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="textBlock" Grid.Row="0" VerticalAlignment="Center" Padding="40,0,0,0"
+                       Text="Options" 
+                       Style="{StaticResource StyleTextBlockTitle}"/>
+                <Grid Name="GridGeneralOptions" Grid.Row="1">
+                    <TextBlock x:Name="textBlockClientLocation" Style="{StaticResource StyleTextBlockGeneral}" 
+                           Margin="24,23,0,0" Text="League Client Location:" VerticalAlignment="Top" HorizontalAlignment="Left" Width="161"/>
+                    <TextBox x:Name="textBox" Height="23" Margin="190,25,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+                    <Button x:Name="buttonDone" Content="Done" HorizontalAlignment="Center" Margin="0,0,0,4" VerticalAlignment="Bottom" Width="75" Click="ButtonDone_Click"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
