@@ -1,0 +1,3 @@
+[submodule "LCU-API-Tavern"]
+	path = LCU-API-Tavern
+	url = https://github.com/Zaichata/LCU-API-Tavern
