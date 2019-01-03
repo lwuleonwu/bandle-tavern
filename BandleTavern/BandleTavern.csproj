@@ -131,5 +131,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LCU-API-Tavern\LcuApiTavern\LcuApiTavern.csproj">
+      <Project>{2560d76a-6a23-4a67-9ade-abbc108ab1c6}</Project>
+      <Name>LcuApiTavern</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
