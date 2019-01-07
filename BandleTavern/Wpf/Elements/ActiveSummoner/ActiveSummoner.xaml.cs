@@ -44,6 +44,6 @@ namespace BandleTavern.Wpf.Elements.ActiveSummoner
         /// <summary>
         /// Translates the given string to uri and obtains and displays bitmap if available from source.
         /// </summary>
-        public string SummonerIconSource { get => Icon.Source; set => Icon.Source = value; }
+        public BitmapImage SummonerIconSource { get => Icon.Source; set => Icon.Source = value; }
     }
 }

@@ -56,6 +56,9 @@
     </ApplicationDefinition>
     <Compile Include="Extensions\DependancyObjectExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="LcuCache.cs" />
+    <Compile Include="LcuInteraction.cs" />
+    <Compile Include="Options.cs" />
     <Compile Include="Wpf\Elements\ActiveSummoner\ActiveSummoner.xaml.cs">
       <DependentUpon>ActiveSummoner.xaml</DependentUpon>
     </Compile>
@@ -67,6 +70,9 @@
     </Compile>
     <Compile Include="Wpf\Elements\WindowBanner\WindowBanner.xaml.cs">
       <DependentUpon>WindowBanner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wpf\Windows\DialogClientDirectory.xaml.cs">
+      <DependentUpon>DialogClientDirectory.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -101,6 +107,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Wpf\Styles\TextBlockStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wpf\Windows\DialogClientDirectory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -20,17 +20,41 @@ namespace BandleTavern
     /// </summary>
     public partial class MainWindow : Window
     {
+        private LcuInteraction LcuInteraction;
         public MainWindow()
         {
             InitializeComponent();
+            InitOptions();
+            LcuInteraction = new LcuInteraction();
+            LcuInteraction.InitLcuApi(this);
         }
 
         private void ButtonOptions_Click(object sender, RoutedEventArgs e)
         {
             PanelOptions.Dispatcher.Invoke(() =>
             {
+                PanelOptions.LoadOptionsValues();
                 PanelOptions.Visibility = Visibility.Visible;
             });
+        }
+
+        /// <summary>
+        /// Essentially Reset the app as if there were a new user. Used for new lockfile, league client, summoner etc.
+        /// </summary>
+        public void InitModules()
+        {
+            LcuCache.GetActiveSummoner();
+            WindowBanner.InitBanner();
+        }
+
+        public void InitOptions()
+        {
+            Options.LoadOptions();
+            if (Options.Active.ClientDirectory == "")
+            {
+                Wpf.Windows.DialogClientDirectory dcd = new Wpf.Windows.DialogClientDirectory();
+                dcd.ShowDialog();
+            }
         }
     }
 }

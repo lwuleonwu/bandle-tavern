@@ -25,9 +25,28 @@ namespace BandleTavern.Wpf.Elements.OptionsPanel
             InitializeComponent();
         }
 
+        public void LoadOptionsValues()
+        {
+            textBoxClientDirectory.Dispatcher.Invoke(() =>
+            {
+                textBoxClientDirectory.Text = Options.Active.ClientDirectory;
+            });
+        }
+
         private void ButtonDone_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+            bool IsNewClientDirectory = false;
+            if (Options.Active.ClientDirectory != textBoxClientDirectory.Text)
+            {
+                IsNewClientDirectory = true;
+            }
+            Options.Active.ClientDirectory = textBoxClientDirectory.Text;
+            Options.SaveOptions();
+            if (IsNewClientDirectory)
+            {
+                LcuInteraction.ListenForLockfile();
+            }
         }
     }
 }

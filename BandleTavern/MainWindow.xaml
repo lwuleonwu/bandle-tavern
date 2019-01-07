@@ -14,7 +14,7 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <WindowBanner:WindowBanner Grid.RowSpan="2"/>
+        <WindowBanner:WindowBanner x:Name="WindowBanner" Grid.RowSpan="2"/>
         <Button x:Name="buttonOptions" Content="Options" Margin="0,0,53,0" VerticalAlignment="Top" Click="ButtonOptions_Click" HorizontalAlignment="Right" Width="75"/>
         <OptionsPanel:OptionsPanel x:Name="PanelOptions" Grid.RowSpan="2" Visibility="Collapsed"/>
     </Grid>

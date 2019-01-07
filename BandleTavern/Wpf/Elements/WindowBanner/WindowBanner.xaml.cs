@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LcuApiTavern.Plugins.LolSummoner.V1;
 
 namespace BandleTavern.Wpf.Elements.WindowBanner
 {
@@ -24,5 +25,31 @@ namespace BandleTavern.Wpf.Elements.WindowBanner
         {
             InitializeComponent();
         }
+
+        public void InitBanner()
+        {
+            Summoner = LcuCache.ActiveSummoner;
+        }
+
+        public CurrentSummoner Summoner
+        {
+            get => _summoner;
+            set
+            {
+                _summoner = value;
+                if (value != null)
+                {
+                    ActiveSummoner.SummonerIconSource = value.ProfileIcon;
+                    ActiveSummoner.SummonerName = value.DisplayName;
+                }
+                else
+                {
+                    ActiveSummoner.SummonerIconSource = null;
+                    ActiveSummoner.SummonerName = "";
+                }
+            }
+        }
+
+        private CurrentSummoner _summoner;
     }
 }
