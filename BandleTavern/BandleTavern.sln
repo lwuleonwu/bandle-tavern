@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BandleTavern", "BandleTaver
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LcuApiTavern", "..\LCU-API-Tavern\LcuApiTavern\LcuApiTavern.csproj", "{2560D76A-6A23-4A67-9ADE-ABBC108AB1C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BandleTavernTests", "..\BandleTavernTests\BandleTavernTests.csproj", "{90BAFD5E-0040-4E71-A70A-B8F0FD0797EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2560D76A-6A23-4A67-9ADE-ABBC108AB1C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2560D76A-6A23-4A67-9ADE-ABBC108AB1C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2560D76A-6A23-4A67-9ADE-ABBC108AB1C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90BAFD5E-0040-4E71-A70A-B8F0FD0797EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90BAFD5E-0040-4E71-A70A-B8F0FD0797EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90BAFD5E-0040-4E71-A70A-B8F0FD0797EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90BAFD5E-0040-4E71-A70A-B8F0FD0797EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
