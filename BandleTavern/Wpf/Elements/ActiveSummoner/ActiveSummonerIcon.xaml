@@ -7,11 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="450">
     <Grid Name="MainGrid">
-        <!--Circular frame for summoner icon.-->
-        <Ellipse>
-            <Ellipse.Fill>
-                <ImageBrush x:Name="SummonerIcon"/>
-            </Ellipse.Fill>
-        </Ellipse>
+        <Image x:Name="SummonerIcon"/>
     </Grid>
 </UserControl>

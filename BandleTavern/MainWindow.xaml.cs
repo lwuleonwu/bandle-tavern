@@ -21,20 +21,24 @@ namespace BandleTavern
     public partial class MainWindow : Window
     {
         private LcuInteraction LcuInteraction;
+
+        public static MainWindow Active;
+
         public MainWindow()
         {
             InitializeComponent();
+            Active = this;
             InitOptions();
             LcuInteraction = new LcuInteraction();
             LcuInteraction.InitLcuApi(this);
         }
 
-        private void ButtonOptions_Click(object sender, RoutedEventArgs e)
+        public static void OptionsPanelVisible()
         {
-            PanelOptions.Dispatcher.Invoke(() =>
+            Active.PanelOptions.Dispatcher.Invoke(() =>
             {
-                PanelOptions.LoadOptionsValues();
-                PanelOptions.Visibility = Visibility.Visible;
+                Active.PanelOptions.LoadOptionsValues();
+                Active.PanelOptions.Visibility = Visibility.Visible;
             });
         }
 

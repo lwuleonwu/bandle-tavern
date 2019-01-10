@@ -9,6 +9,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Wpf/Resources/Colours.xaml" />
                 <ResourceDictionary Source="Wpf/Styles/TextBlockStyles.xaml" />
+                <ResourceDictionary Source="Wpf/Styles/Buttons.xaml" />
+                <ResourceDictionary Source="Wpf/Styles/Misc.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

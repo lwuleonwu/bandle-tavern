@@ -40,7 +40,7 @@ namespace BandleTavern.Wpf.Elements.ActiveSummoner
             {
                 _source = value;
                 SummonerIcon.Dispatcher.Invoke(() => {
-                    SummonerIcon.ImageSource = value;
+                    SummonerIcon.Source = value;
                 });
             }
         }

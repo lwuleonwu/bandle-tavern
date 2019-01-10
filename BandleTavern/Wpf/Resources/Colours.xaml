@@ -1,19 +1,38 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:BandleTavern.Wpf.Resources">
-    
+
     <!--Raw Colours-->
     <Color x:Key="ColourTextTitle01">#efe6d1</Color>
+    <Color x:Key="ColourTextTitle02">#cbbe8f</Color>
     <Color x:Key="ColourText01">#9a9688</Color>
     <Color x:Key="ColourBannerMainBackground">#020a13</Color>
     <Color x:Key="ColourInactiveOverlay">#ac000000</Color>
     <Color x:Key="ColourWindowBorder">#453711</Color>
+    <Color x:Key="ColourUiHighlight">#755a23</Color>
+    <Color x:Key="ColourUiHighlightTransparent">#00755a23</Color>
+    <Color x:Key="ColourUiHighlightHighlight">#b58d2f</Color>
 
     <!--Brushes-->
     <SolidColorBrush x:Key="BrushTextTitle01" Color="{StaticResource ColourTextTitle01}"/>
+    <SolidColorBrush x:Key="BrushTextTitle02" Color="{StaticResource ColourTextTitle02}"/>
     <SolidColorBrush x:Key="BrushText01" Color="{StaticResource ColourText01}"/>
     <SolidColorBrush x:Key="BrushBannerMainBackground" Color="{StaticResource ColourBannerMainBackground}"/>
     <SolidColorBrush x:Key="BrushInactiveOverlay" Color="{StaticResource ColourInactiveOverlay}"/>
     <SolidColorBrush x:Key="BrushWindowBorder" Color="{StaticResource ColourWindowBorder}"/>
-    
+    <SolidColorBrush x:Key="BrushUiHighlight" Color="{StaticResource ColourUiHighlight}"/>
+    <LinearGradientBrush x:Key="BrushSeperatorToolbar">
+        <GradientStop Color="{StaticResource ColourUiHighlight}" Offset="0"/>
+        <GradientStop Color="{StaticResource ColourUiHighlightTransparent}" Offset="0.2"/>
+        <GradientStop Color="{StaticResource ColourUiHighlightTransparent}" Offset="0.4"/>
+        <GradientStop Color="{StaticResource ColourUiHighlight}" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="BrushToolbarButtonShadow" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF000000" Offset="0"/>
+        <GradientStop Color="#00000000" Offset="0.2"/>
+        <GradientStop Color="#00000000" Offset="0.8"/>
+        <GradientStop Color="#FF000000" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="BrushToolbarHighlight" Color="{StaticResource ColourUiHighlight}"/>
+    <SolidColorBrush x:Key="BrushUiHighlightHighlight" Color="{StaticResource ColourUiHighlightHighlight}"/>
 </ResourceDictionary>

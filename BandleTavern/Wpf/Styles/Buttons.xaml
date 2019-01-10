@@ -1,0 +1,154 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BandleTavern.Wpf.Styles">
+
+    <Style x:Key="MainToolbarToggleButton" TargetType="{x:Type ToggleButton}">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="10,2,10,2"/>
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid Name="buttonGrid" Background="{StaticResource BrushToolbarButtonShadow}">
+                        <Rectangle Name="RectangleHighlight" Grid.Column="1" Fill="{StaticResource BrushToolbarHighlight}" Height="5" VerticalAlignment="Top" HorizontalAlignment="Center" 
+                                   Width="{Binding Path=ActualWidth, ElementName=buttonGrid}" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <ScaleTransform x:Name="RectangleHighlightScale" ScaleX="0"/>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                        <Grid Margin="{TemplateBinding Padding}" >
+                            <TextBlock Name="TextBoxContent"
+                                       Text="{TemplateBinding Content}" 
+                                       Foreground="{StaticResource BrushTextTitle02}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       FontSize="16"
+                                       Style="{StaticResource StyleTextBlockTitle}"
+                                       />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="TextBoxContent" Property="Foreground" Value="{StaticResource BrushTextTitle01}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="TextBoxContent" Property="Foreground" Value="{StaticResource BrushTextTitle01}"/>
+                            <Setter Property="IsHitTestVisible" Value="False"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="TextBoxContent"
+                                            Storyboard.TargetProperty="FontSize"
+                                            To="17" Duration="0:0:0.05"/>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="RectangleHighlightScale"
+                                            Storyboard.TargetProperty="ScaleX"
+                                            To="1" Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="TextBoxContent"
+                                            Storyboard.TargetProperty="FontSize"
+                                            To="16" Duration="0:0:0.1"/>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="RectangleHighlightScale"
+                                            Storyboard.TargetProperty="ScaleX"
+                                            To="0" Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="MainToolbarButton" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="10,2,10,2"/>
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Name="buttonGrid" Background="{StaticResource BrushToolbarButtonShadow}">
+                        <Grid Margin="{TemplateBinding Padding}" >
+                            <TextBlock Name="TextBoxContent"
+                                       Text="{TemplateBinding Content}" 
+                                       Foreground="{StaticResource BrushTextTitle02}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       FontSize="16"
+                                       Style="{StaticResource StyleTextBlockTitle}"
+                                       />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="TextBoxContent" Property="Foreground" Value="{StaticResource BrushTextTitle01}"/>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="Button.Click">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                            Storyboard.TargetName="TextBoxContent"
+                                            Storyboard.TargetProperty="FontSize"
+                                            To="17" Duration="0:0:0.07"/>
+                                    <DoubleAnimation
+                                            Storyboard.TargetName="TextBoxContent"
+                                            Storyboard.TargetProperty="FontSize"
+                                            To="16" Duration="0:0:0.07" BeginTime="0:0:0.07"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ButtonGeneric" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="10,4,10,4"/>
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Name="buttonBorder" Background="{StaticResource BrushBannerMainBackground}"  BorderBrush="{StaticResource BrushUiHighlight}" BorderThickness="2">
+                        <Grid Margin="{TemplateBinding Padding}" >
+                            <TextBlock Name="TextBoxContent"
+                                       Text="{TemplateBinding Content}" 
+                                       Foreground="{StaticResource BrushTextTitle02}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       FontSize="16"
+                                       Style="{StaticResource StyleTextBlockTitle}"
+                                       />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="TextBoxContent" Property="Foreground" Value="{StaticResource BrushTextTitle01}"/>
+                            <Setter TargetName="buttonBorder" Property="BorderBrush" Value="{StaticResource BrushUiHighlightHighlight}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="TextBoxContent" Property="Foreground" Value="{StaticResource BrushText01}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

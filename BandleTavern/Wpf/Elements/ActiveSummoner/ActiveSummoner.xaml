@@ -11,7 +11,7 @@
             <ColumnDefinition Width="{Binding ElementName=MainGrid, Path=ActualHeight}"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <local:ActiveSummonerIcon x:Name="Icon" Grid.Column="0" Margin="10,10,10,10"/>
+        <local:ActiveSummonerIcon x:Name="Icon" Grid.Column="0"/>
         <TextBlock Name="TextBlockSummonerName" Grid.Column="1" Text="" Padding="10,20,10,10"
                    Style="{StaticResource StyleTextBlockActiveSummoner}"
                    />

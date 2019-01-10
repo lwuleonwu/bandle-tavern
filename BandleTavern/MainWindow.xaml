@@ -11,11 +11,11 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="2"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <WindowBanner:WindowBanner x:Name="WindowBanner" Grid.RowSpan="2"/>
-        <Button x:Name="buttonOptions" Content="Options" Margin="0,0,53,0" VerticalAlignment="Top" Click="ButtonOptions_Click" HorizontalAlignment="Right" Width="75"/>
-        <OptionsPanel:OptionsPanel x:Name="PanelOptions" Grid.RowSpan="2" Visibility="Collapsed"/>
+        <Rectangle Fill="{StaticResource BrushUiHighlight}"/>
+        <WindowBanner:WindowBanner x:Name="WindowBanner" Grid.Row="1"/>
+        <OptionsPanel:OptionsPanel x:Name="PanelOptions" Grid.Row="1" Visibility="Collapsed"/>
     </Grid>
 </Window>
