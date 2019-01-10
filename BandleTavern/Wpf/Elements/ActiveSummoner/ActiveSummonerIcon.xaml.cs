@@ -22,7 +22,7 @@ namespace BandleTavern.Wpf.Elements.ActiveSummoner
     /// </summary>
     public partial class ActiveSummonerIcon : UserControl
     {
-        private string _source;
+        private BitmapImage _source;
 
         public ActiveSummonerIcon()
         {
@@ -33,14 +33,14 @@ namespace BandleTavern.Wpf.Elements.ActiveSummoner
         /// Returns current source in string format.
         /// Tries to obtain a bitmap from a given string location.
         /// </summary>
-        public string Source
+        public BitmapImage Source
         {
             get => _source;
             set
             {
                 _source = value;
                 SummonerIcon.Dispatcher.Invoke(() => {
-                    SummonerIcon.ImageSource = value.StringToImageSource();
+                    SummonerIcon.ImageSource = value;
                 });
             }
         }
