@@ -8,14 +8,16 @@
         xmlns:WindowBanner="clr-namespace:BandleTavern.Wpf.Elements.WindowBanner"
         x:Class="BandleTavern.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Bandle Tavern" Height="450" Width="800">
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="2"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Rectangle Fill="{StaticResource BrushUiHighlight}"/>
-        <WindowBanner:WindowBanner x:Name="WindowBanner" Grid.Row="1"/>
-        <OptionsPanel:OptionsPanel x:Name="PanelOptions" Grid.Row="1" Visibility="Collapsed"/>
+        <WindowBanner:WindowBanner x:Name="WindowBanner" Grid.Row="2"/>
+        <OptionsPanel:OptionsPanel x:Name="PanelOptions" Grid.Row="2" Visibility="Collapsed"/>
+        <TextBlock Name="textblockClientConnectionError" Visibility="Collapsed" Grid.RowSpan="2" Text="Connection to League of Legends Client Not Found!" Style="{StaticResource StyleTextBlockConnectionError}"/>
     </Grid>
 </Window>

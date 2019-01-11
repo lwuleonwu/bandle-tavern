@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BandleTavern.Lcu;
 
 namespace BandleTavern
 {
@@ -47,8 +48,7 @@ namespace BandleTavern
         /// </summary>
         public void InitModules()
         {
-            LcuCache.GetActiveSummoner();
-            WindowBanner.InitBanner();
+            Lcu.Cache.UserSummoner.ListenForSummoner();
         }
 
         public void InitOptions()
@@ -58,6 +58,17 @@ namespace BandleTavern
             {
                 Wpf.Windows.DialogClientDirectory dcd = new Wpf.Windows.DialogClientDirectory();
                 dcd.ShowDialog();
+            }
+        }
+
+        public Visibility ClientConnectionErrorVis
+        {
+            set
+            {
+                textblockClientConnectionError.Dispatcher.Invoke(() =>
+                {
+                    textblockClientConnectionError.Visibility = value;
+                });
             }
         }
     }

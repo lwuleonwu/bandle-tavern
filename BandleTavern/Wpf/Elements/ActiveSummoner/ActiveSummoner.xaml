@@ -6,14 +6,39 @@
              xmlns:local="clr-namespace:BandleTavern.Wpf.Elements.ActiveSummoner"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="450">
-    <Grid Name="MainGrid">
+    <Grid Name="MainGrid" Visibility="Visible">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2"/>
             <ColumnDefinition Width="{Binding ElementName=MainGrid, Path=ActualHeight}"/>
+            <ColumnDefinition Width="2"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <local:ActiveSummonerIcon x:Name="Icon" Grid.Column="0"/>
-        <TextBlock Name="TextBlockSummonerName" Grid.Column="1" Text="" Padding="10,20,10,10"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Column="0" Grid.RowSpan="4" Fill="{StaticResource BrushUiHighlight}"/>
+        
+        <local:ActiveSummonerIcon x:Name="Icon" Grid.Column="1" Grid.RowSpan="4"/>
+
+        <Rectangle Grid.Column="2" Grid.RowSpan="4" Fill="{StaticResource BrushUiHighlight}"/>
+        
+        <Rectangle Grid.Row="1" Grid.Column="3" Fill="{StaticResource BrushUiHighlight}"/>
+
+        <TextBlock Name="TextBlockSummonerName" Grid.Column="3" Text=""
                    Style="{StaticResource StyleTextBlockActiveSummoner}"
+                   Height="35" Margin="10,10,0,0" VerticalAlignment="Top"
+                   />
+        
+        <local:ActiveSummonerXpBar x:Name="XpBar" Grid.Column="3" Grid.Row="3"/>
+        
+        <Button Name="buttonRefresh" Grid.Column="3" Grid.Row="2" Style="{StaticResource ButtonRefresh}" Margin="5,0,0,5" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="27" Click="ButtonRefresh_Click" />
+        <TextBlock Name="TextBlockSummonerLevel" Grid.Column="3" Grid.Row="2" Text="" Padding="0,0,5,0"
+                   Style="{StaticResource StyleTextBlockGeneral}" Margin="37,0,0,0"
+                   TextAlignment="Right" Height="19" VerticalAlignment="Bottom"
                    />
     </Grid>
 </UserControl>

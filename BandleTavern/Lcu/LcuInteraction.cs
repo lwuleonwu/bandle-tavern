@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LcuApiTavern;
-using System.IO;
 using System.Timers;
 
-namespace BandleTavern
+namespace BandleTavern.Lcu
 {
     public class LcuInteraction
     {
+        private static bool _clientConnectionStatus = false;
         private Timer TimerFileCheck;
+        private Timer TimerConnectionCheck;
         private MainWindow Master;
         private static LcuInteraction Active;
 
@@ -45,7 +46,7 @@ namespace BandleTavern
                 }
             }
         }
-        
+
         /// <summary>
         /// Assigns master and triggers timer to wait for lockfile
         /// </summary>
@@ -57,7 +58,12 @@ namespace BandleTavern
             TimerFileCheck = new Timer();
             TimerFileCheck.Interval = 5000;
             TimerFileCheck.Elapsed += TimerFileCheckElapsed;
+            TimerConnectionCheck = new Timer();
+            TimerConnectionCheck.Interval = 10000;
+            TimerConnectionCheck.Elapsed += TimerConnectionCheckElapsed;
+            TimerConnectionCheck.Start();
             ListenForLockfile();
+            ClientConnectionCheck();
         }
         /// <summary>
         /// Makes sure that lockfile timer is stopped and disposed.
@@ -73,11 +79,64 @@ namespace BandleTavern
         public static void ListenForLockfile()
         {
             Active.TimerFileCheck.Start();
+            Active.TryLockfileLoad();
         }
 
         private void TimerFileCheckElapsed(object sender, ElapsedEventArgs e)
         {
             TryLockfileLoad();
+        }
+
+        private void TimerConnectionCheckElapsed(object sender, ElapsedEventArgs e)
+        {
+            ClientConnectionCheck();
+        }
+
+        private void ClientConnectionCheck()
+        {
+            if (LcuApiTavern.Plugins.LolServiceStatus.V1.LcuStatus.Get() == null)
+            {
+                //Connection possibly lost
+                ClientConnectionStatus = false;
+            }
+            else
+            {
+                ClientConnectionStatus = true;
+            }
+        }
+
+
+
+        public static bool ClientConnectionStatus
+        {
+            get
+            {
+                return _clientConnectionStatus;
+            }
+            set
+            {
+                if (_clientConnectionStatus != value)
+                {
+                    _clientConnectionStatus = value;
+                    if (_clientConnectionStatus)
+                    {
+                        //connection established
+                        if (MainWindow.Active != null)
+                        {
+                            MainWindow.Active.ClientConnectionErrorVis = System.Windows.Visibility.Collapsed;
+                        }
+                    }
+                    else
+                    {
+                        //connection lost
+                        if (MainWindow.Active != null)
+                        {
+                            MainWindow.Active.ClientConnectionErrorVis = System.Windows.Visibility.Visible;
+                        }
+                        ListenForLockfile();
+                    }
+                }
+            }
         }
     }
 }

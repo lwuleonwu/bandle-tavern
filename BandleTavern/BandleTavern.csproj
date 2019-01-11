@@ -60,14 +60,17 @@
     <Compile Include="Extensions\DependancyObjectExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="FirebaseConnect.cs" />
-    <Compile Include="LcuCache.cs" />
-    <Compile Include="LcuInteraction.cs" />
+    <Compile Include="Lcu\Cache\UserSummoner.cs" />
+    <Compile Include="Lcu\LcuInteraction.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Wpf\Elements\ActiveSummoner\ActiveSummoner.xaml.cs">
       <DependentUpon>ActiveSummoner.xaml</DependentUpon>
     </Compile>
     <Compile Include="Wpf\Elements\ActiveSummoner\ActiveSummonerIcon.xaml.cs">
       <DependentUpon>ActiveSummonerIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wpf\Elements\ActiveSummoner\ActiveSummonerXpBar.xaml.cs">
+      <DependentUpon>ActiveSummonerXpBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Wpf\Elements\OptionsPanel\OptionsPanel.xaml.cs">
       <DependentUpon>OptionsPanel.xaml</DependentUpon>
@@ -98,6 +101,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Wpf\Elements\ActiveSummoner\ActiveSummonerIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wpf\Elements\ActiveSummoner\ActiveSummonerXpBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

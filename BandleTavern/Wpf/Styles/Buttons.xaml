@@ -151,4 +151,36 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="ButtonRefresh" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="10,4,10,4"/>
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Name="buttonBorder" Background="Transparent"  BorderBrush="Transparent" BorderThickness="0">
+                        <Viewbox>
+                            <Grid Width="19" Height="19" SnapsToDevicePixels="True" >
+                                <Polygon x:Name="LeftArrow" Fill="{StaticResource BrushText01}" RenderOptions.EdgeMode="Aliased" Points="13,3, 3,3, 3,13, 1,13, 4,16, 7,13, 5,13, 5,5, 11,5"/>
+                                <Polygon x:Name="RightArrow" Fill="{StaticResource BrushText01}" RenderOptions.EdgeMode="Aliased" Points="6,16, 8,14, 14,14, 14,6, 12,6, 15,3, 18,6, 16,6, 16,16"/>
+                            </Grid>
+                        </Viewbox>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="LeftArrow" Property="Fill" Value="{StaticResource BrushTextTitle01}"/>
+                            <Setter TargetName="RightArrow" Property="Fill" Value="{StaticResource BrushTextTitle01}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="LeftArrow" Property="Fill" Value="{StaticResource BrushTextInactive}"/>
+                            <Setter TargetName="RightArrow" Property="Fill" Value="{StaticResource BrushTextInactive}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

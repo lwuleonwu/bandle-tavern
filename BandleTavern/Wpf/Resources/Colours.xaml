@@ -5,7 +5,10 @@
     <!--Raw Colours-->
     <Color x:Key="ColourTextTitle01">#efe6d1</Color>
     <Color x:Key="ColourTextTitle02">#cbbe8f</Color>
-    <Color x:Key="ColourText01">#9a9688</Color>
+    <Color x:Key="ColourText01">#9f9b8b</Color>
+    <Color x:Key="ColourTextInactive">#5c5b57</Color>
+    <Color x:Key="ColourTextConnectionError">#FFFFFF</Color>
+    <Color x:Key="ColourConnectionErrorBackground">#dd2e1c</Color>
     <Color x:Key="ColourBannerMainBackground">#020a13</Color>
     <Color x:Key="ColourInactiveOverlay">#ac000000</Color>
     <Color x:Key="ColourWindowBorder">#453711</Color>
@@ -17,6 +20,7 @@
     <SolidColorBrush x:Key="BrushTextTitle01" Color="{StaticResource ColourTextTitle01}"/>
     <SolidColorBrush x:Key="BrushTextTitle02" Color="{StaticResource ColourTextTitle02}"/>
     <SolidColorBrush x:Key="BrushText01" Color="{StaticResource ColourText01}"/>
+    <SolidColorBrush x:Key="BrushTextInactive" Color="{StaticResource ColourTextInactive}"/>
     <SolidColorBrush x:Key="BrushBannerMainBackground" Color="{StaticResource ColourBannerMainBackground}"/>
     <SolidColorBrush x:Key="BrushInactiveOverlay" Color="{StaticResource ColourInactiveOverlay}"/>
     <SolidColorBrush x:Key="BrushWindowBorder" Color="{StaticResource ColourWindowBorder}"/>
@@ -35,4 +39,6 @@
     </LinearGradientBrush>
     <SolidColorBrush x:Key="BrushToolbarHighlight" Color="{StaticResource ColourUiHighlight}"/>
     <SolidColorBrush x:Key="BrushUiHighlightHighlight" Color="{StaticResource ColourUiHighlightHighlight}"/>
+    <SolidColorBrush x:Key="BrushTextConnectionError" Color="{StaticResource ColourTextConnectionError}"/>
+    <SolidColorBrush x:Key="BrushConnectionErrorBackground" Color="{StaticResource ColourConnectionErrorBackground}"/>
 </ResourceDictionary>

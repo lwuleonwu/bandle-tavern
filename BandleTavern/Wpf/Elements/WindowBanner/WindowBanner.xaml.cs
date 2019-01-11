@@ -26,11 +26,6 @@ namespace BandleTavern.Wpf.Elements.WindowBanner
             InitializeComponent();
         }
 
-        public void InitBanner()
-        {
-            Summoner = LcuCache.ActiveSummoner;
-        }
-
         public CurrentSummoner Summoner
         {
             get => _summoner;

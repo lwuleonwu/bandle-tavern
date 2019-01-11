@@ -22,4 +22,13 @@
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontWeight" Value="Regular"/>
     </Style>
+    <Style x:Key="StyleTextBlockConnectionError" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource BrushTextConnectionError}"/>
+        <Setter Property="Background" Value="{StaticResource BrushConnectionErrorBackground}"/>
+        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
 </ResourceDictionary>
