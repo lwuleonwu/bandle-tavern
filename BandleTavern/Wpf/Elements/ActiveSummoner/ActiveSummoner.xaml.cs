@@ -107,7 +107,7 @@ namespace BandleTavern.Wpf.Elements.ActiveSummoner
 
         private void ButtonRefresh_Click(object sender, RoutedEventArgs e)
         {
-            UserSummoner.ListenForSummoner();
+            UserSummoner.GetActiveSummoner();
         }
 
         public Visibility SetVisibility

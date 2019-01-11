@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LcuApiTavern;
-using System.Timers;
 
 namespace BandleTavern.Lcu
 {
     public class LcuInteraction
     {
         private static bool _clientConnectionStatus = false;
-        private Timer TimerFileCheck;
-        private Timer TimerConnectionCheck;
         private MainWindow Master;
         private static LcuInteraction Active;
 
@@ -29,25 +26,6 @@ namespace BandleTavern.Lcu
         }
 
         /// <summary>
-        /// Tries to load lockfile, and checks for a successful load.
-        /// </summary>
-        public void TryLockfileLoad()
-        {
-            if (ClientDirectory != "")
-            {
-                LockFile OldLockFile = LeagueClient.LockFile;
-
-                LeagueClient.GetLockFile();
-                if (OldLockFile != LeagueClient.LockFile)
-                {
-                    // new lockfile detected
-                    TimerFileCheck.Stop();
-                    Master.InitModules();
-                }
-            }
-        }
-
-        /// <summary>
         /// Assigns master and triggers timer to wait for lockfile
         /// </summary>
         /// <param name="master">MainWindow Ref</param>
@@ -55,58 +33,42 @@ namespace BandleTavern.Lcu
         {
             Master = master;
             Active = this;
-            TimerFileCheck = new Timer();
-            TimerFileCheck.Interval = 5000;
-            TimerFileCheck.Elapsed += TimerFileCheckElapsed;
-            TimerConnectionCheck = new Timer();
-            TimerConnectionCheck.Interval = 10000;
-            TimerConnectionCheck.Elapsed += TimerConnectionCheckElapsed;
-            TimerConnectionCheck.Start();
-            ListenForLockfile();
-            ClientConnectionCheck();
+
+            LeagueClient.OnLockFileChange += LockfileChanged;
+
+            LeagueClient.InitDetectionTimer();
         }
         /// <summary>
         /// Makes sure that lockfile timer is stopped and disposed.
         /// </summary>
         public void DeInitLcuApi()
         {
-            TimerFileCheck.Stop();
-            TimerFileCheck.Dispose();
+            LeagueClient.OnLockFileChange -= LockfileChanged;
+            LeagueClient.DeInitDetectionTimer();
         }
+
         /// <summary>
-        /// Starts timer in order to wait for lockfile.
+        /// Gets the lockfile that was switched to and converts to connection status.
+        /// If Successful connection then initialises modules from MainWindow.
         /// </summary>
-        public static void ListenForLockfile()
+        /// <param name="e">EventArgs</param>
+        private static void LockfileChanged(LockfileEventArgs e)
         {
-            Active.TimerFileCheck.Start();
-            Active.TryLockfileLoad();
-        }
-
-        private void TimerFileCheckElapsed(object sender, ElapsedEventArgs e)
-        {
-            TryLockfileLoad();
-        }
-
-        private void TimerConnectionCheckElapsed(object sender, ElapsedEventArgs e)
-        {
-            ClientConnectionCheck();
-        }
-
-        private void ClientConnectionCheck()
-        {
-            if (LcuApiTavern.Plugins.LolServiceStatus.V1.LcuStatus.Get() == null)
+            if (LeagueClient.LockFile != null)
             {
-                //Connection possibly lost
-                ClientConnectionStatus = false;
+                ClientConnectionStatus = true;
+                MainWindow.Active.InitModules();
             }
             else
             {
-                ClientConnectionStatus = true;
+                ClientConnectionStatus = false;
             }
         }
 
-
-
+        /// <summary>
+        /// Keeps Track of the connection status with the client, any change in status will show or hide the 
+        /// MainWindow error message to inform the user.
+        /// </summary>
         public static bool ClientConnectionStatus
         {
             get
@@ -133,7 +95,6 @@ namespace BandleTavern.Lcu
                         {
                             MainWindow.Active.ClientConnectionErrorVis = System.Windows.Visibility.Visible;
                         }
-                        ListenForLockfile();
                     }
                 }
             }

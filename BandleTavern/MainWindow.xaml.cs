@@ -54,11 +54,6 @@ namespace BandleTavern
         public void InitOptions()
         {
             Options.LoadOptions();
-            if (Options.Active.ClientDirectory == "")
-            {
-                Wpf.Windows.DialogClientDirectory dcd = new Wpf.Windows.DialogClientDirectory();
-                dcd.ShowDialog();
-            }
         }
 
         public Visibility ClientConnectionErrorVis

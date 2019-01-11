@@ -53,18 +53,26 @@ namespace BandleTavern.Lcu.Cache
                 if (Timer == null)
                 {
                     Timer = new Timer();
-                    Timer.Interval = 5000;
+                    Timer.Interval = 10000;
                     Timer.Elapsed += TimerElapsed;
                 }
+                TimerTimeoutCount = 0;
                 Timer.Start();
             }
         }
 
         private static Timer Timer;
+        private static int TimerTimeout = 60;
+        private static int TimerTimeoutCount = 0;
 
         private static void TimerElapsed(object o, ElapsedEventArgs e)
         {
             GetActiveSummoner();
+            TimerTimeoutCount++;
+            if (TimerTimeout < TimerTimeoutCount)
+            {
+                Timer.Stop();
+            }
         }
     }
 }

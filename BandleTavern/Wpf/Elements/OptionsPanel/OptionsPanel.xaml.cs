@@ -46,7 +46,7 @@ namespace BandleTavern.Wpf.Elements.OptionsPanel
             Options.SaveOptions();
             if (IsNewClientDirectory)
             {
-                LcuInteraction.ListenForLockfile();
+                LcuApiTavern.LeagueClient.ClientDetection();
             }
         }
     }
