@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:BandleTavern.Wpf.Elements.ActiveSummoner"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Black">
-        <Rectangle Fill="Orange">
+    <Grid Background="{StaticResource BrushUiBarBackground}">
+        <Rectangle Fill="{StaticResource BrushUiBar}">
             <Rectangle.RenderTransform>
                 <ScaleTransform x:Name="XpScale" ScaleX="1"/>
             </Rectangle.RenderTransform>

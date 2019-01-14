@@ -8,6 +8,7 @@
         xmlns:WindowBanner="clr-namespace:BandleTavern.Wpf.Elements.WindowBanner"
         x:Class="BandleTavern.MainWindow"
         mc:Ignorable="d"
+        MinWidth="550"
         Title="Bandle Tavern" Height="450" Width="800">
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>

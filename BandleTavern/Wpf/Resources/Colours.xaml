@@ -12,9 +12,13 @@
     <Color x:Key="ColourBannerMainBackground">#020a13</Color>
     <Color x:Key="ColourInactiveOverlay">#ac000000</Color>
     <Color x:Key="ColourWindowBorder">#453711</Color>
+    <Color x:Key="ColourUiHighlightDark">#684600</Color>
     <Color x:Key="ColourUiHighlight">#755a23</Color>
     <Color x:Key="ColourUiHighlightTransparent">#00755a23</Color>
     <Color x:Key="ColourUiHighlightHighlight">#b58d2f</Color>
+    <Color x:Key="ColourUiBarBackground">#000000</Color>
+    <Color x:Key="ColourUiBar">#ff8c1a</Color>
+    
 
     <!--Brushes-->
     <SolidColorBrush x:Key="BrushTextTitle01" Color="{StaticResource ColourTextTitle01}"/>
@@ -37,8 +41,11 @@
         <GradientStop Color="#00000000" Offset="0.8"/>
         <GradientStop Color="#FF000000" Offset="1"/>
     </LinearGradientBrush>
+    <SolidColorBrush x:Key="BrushUiHighlightDark" Color="{StaticResource ColourUiHighlightDark}"/>
     <SolidColorBrush x:Key="BrushToolbarHighlight" Color="{StaticResource ColourUiHighlight}"/>
     <SolidColorBrush x:Key="BrushUiHighlightHighlight" Color="{StaticResource ColourUiHighlightHighlight}"/>
     <SolidColorBrush x:Key="BrushTextConnectionError" Color="{StaticResource ColourTextConnectionError}"/>
     <SolidColorBrush x:Key="BrushConnectionErrorBackground" Color="{StaticResource ColourConnectionErrorBackground}"/>
+    <SolidColorBrush x:Key="BrushUiBarBackground" Color="{StaticResource ColourUiBarBackground}"/>
+    <SolidColorBrush x:Key="BrushUiBar" Color="{StaticResource ColourUiBar}"/>
 </ResourceDictionary>

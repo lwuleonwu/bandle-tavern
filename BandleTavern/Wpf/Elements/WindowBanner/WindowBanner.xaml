@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:BandleTavern.Wpf.Elements.WindowBanner"
              xmlns:ActiveSummoner="clr-namespace:BandleTavern.Wpf.Elements.ActiveSummoner"
              xmlns:Toolbar="clr-namespace:BandleTavern.Wpf.Elements.Toolbar"
+             xmlns:Mission="clr-namespace:BandleTavern.Wpf.Elements.Mission"
              x:Class="BandleTavern.Wpf.Elements.WindowBanner.WindowBanner"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -24,6 +25,8 @@
             <Toolbar:ToolBar/>
         </Grid>
         <Rectangle Grid.Row="1" Fill="{StaticResource BrushUiHighlight}"/>
-        <Grid x:Name="GridContent" Grid.Row="2"/>
+        <Grid x:Name="GridContent" Grid.Row="2">
+            <Mission:MissionList x:Name="MissionList" VerticalAlignment="Top"/>
+        </Grid>
     </Grid>
 </UserControl>

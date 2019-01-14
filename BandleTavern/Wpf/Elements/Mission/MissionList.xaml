@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="BandleTavern.Wpf.Elements.Mission.MissionList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BandleTavern.Wpf.Elements.Mission"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Name="MainGrid" Background="{StaticResource BrushBannerMainBackground}">
+        <ScrollViewer x:Name="scrollViewer" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+            <StackPanel Name="stackPanelMissions" Orientation="Horizontal">
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

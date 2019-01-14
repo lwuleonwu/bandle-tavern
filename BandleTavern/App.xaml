@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="Wpf/Styles/TextBlockStyles.xaml" />
                 <ResourceDictionary Source="Wpf/Styles/Buttons.xaml" />
                 <ResourceDictionary Source="Wpf/Styles/Misc.xaml" />
+                <ResourceDictionary Source="Wpf/Styles/ScrollViewer.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

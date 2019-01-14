@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="BandleTavern.Wpf.Elements.Mission.Mission"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BandleTavern.Wpf.Elements.Mission"
+             mc:Ignorable="d"
+             Height="150" Width="450"
+             d:DesignHeight="250" d:DesignWidth="800">
+    <Grid Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding Path=ActualHeight, ElementName=MainGrid}"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="imageMissionIcon"/>
+        <Grid Name="GridTextContent" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="textBlockTitle" Grid.Row="0" Margin="10,0" 
+                   TextWrapping="Wrap" Text="" VerticalAlignment="Center"
+                   Style="{StaticResource StyleTextBlockMissionsTitle}"
+                   />
+            <TextBlock x:Name="textBlockDescription" Grid.Row="1" Margin="20,0,20,0" 
+                   TextWrapping="Wrap" Text=""
+                   Style="{StaticResource StyleTextBlockMissionsGeneral}"
+                   />
+            <TextBlock x:Name="textBlockHelper" Grid.Row="2" Margin="20,0,20,0" 
+                   TextWrapping="Wrap" Text="" Visibility="Collapsed"
+                   Style="{StaticResource StyleTextBlockMissionsHelper}"
+                   />
+            <TextBlock x:Name="textBlockCompletionStatic" Grid.Row="3" Margin="10,0,0,0" 
+                   TextWrapping="Wrap" Text="Completion Status:" HorizontalAlignment="Left"
+                   Style="{StaticResource StyleTextBlockMissionsSubTitle}" Width="164"
+                   />
+            <StackPanel Name="stackPanelCompletionStatus" Grid.Row="4" Margin="40,0,10,0"/>
+            <TextBlock x:Name="textBlockTimeStatic" Grid.Row="5" Margin="10,0,0,0" 
+                   TextWrapping="Wrap" Text="Time Remaining:" HorizontalAlignment="Left"
+                   Style="{StaticResource StyleTextBlockMissionsSubTitle}" Width="120"
+                   />
+            <TextBlock x:Name="textBlockTimeStatus" Grid.Row="5" Margin="140,0,10,0" 
+                   TextWrapping="Wrap" Text="" TextAlignment="Right"
+                   Style="{StaticResource StyleTextBlockMissionsGeneral}"
+                   />
+        </Grid>
+
+    </Grid>
+</UserControl>

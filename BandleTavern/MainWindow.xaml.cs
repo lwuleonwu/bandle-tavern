@@ -49,6 +49,7 @@ namespace BandleTavern
         public void InitModules()
         {
             Lcu.Cache.UserSummoner.ListenForSummoner();
+            WindowBanner.MissionList.RefreshMissions();
         }
 
         public void InitOptions()
