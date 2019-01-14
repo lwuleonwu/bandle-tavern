@@ -192,6 +192,30 @@ namespace BandleTavern {
         }
 
         /*
+         * retrieves party lists from database
+         * returns the json data of multiple parties if successful with 200 OK HTTP status code
+         */
+        public static async Task<string> RetrieveData(string missionTitle) {
+            string getUrl = $"https://bandle-tavern.firebaseio.com/{missionTitle}.json?orderBy=\"partySize\"&endAt=4&limitToLast=30";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), getUrl)) {
+                // send request to firebase
+                var response = await httpClient.SendAsync(request);
+                Console.WriteLine(response);
+
+                var responseContent = response.Content;
+                var result = "";
+
+                // get response from firebase
+                using (var reader = new StreamReader(await responseContent.ReadAsStreamAsync())) {
+                    result += await reader.ReadToEndAsync();
+                }
+
+                return result;
+            }
+        }
+
+        /*
          * remove party from database
          * returns a JSON response containing null if successful with 200 OK HTTP status code
          */ 
