@@ -39,13 +39,28 @@ namespace BandleTavern.Tests {
             string[] partyMembers = {"Foxwell", "Zaichata", "lt"};
             string[] partyRanks = {"Gold 4", "Unkranked", "Unranked"};
 
-            var result = await FirebaseConnect.Publish("tets", "Foxwell", partySize, partyMembers, partyRanks);
+            int partySize2 = 2;
+            string[] partyMembers2 = {"Dragon Husbando", "Tied and Knotted"};
+            string[] partyRanks2 = {"Unranked", "dont even use this one anymore lol"};
+
+            await FirebaseConnect.SignIn("scarra");
+            var result = await FirebaseConnect.Publish("First Win of the Day", partyMembers[0], partySize, partyMembers, partyRanks);
+            Console.WriteLine(result);
+            var result2 = await FirebaseConnect.Publish("Tets", partyMembers2[0], partySize2, partyMembers2, partyRanks2);
+            Console.WriteLine(result2);
+        }
+
+        [TestMethod()]
+        public async Task FirebaseRetrieveData() {
+            await FirebaseConnect.SignIn("scarra");
+            var result = await FirebaseConnect.RetrieveData("First Win of the Day");
             Console.WriteLine(result);
         }
 
         [TestMethod()]
         public async Task FirebaseRemoveParty() {
-            var result = await FirebaseConnect.RemoveParty("tets", "Foxwell");
+            await FirebaseConnect.SignIn("scarra");
+            var result = await FirebaseConnect.RemoveParty("First Win of the Day", 3, "Foxwefll");
             Console.WriteLine(result);
         }
     }

@@ -169,8 +169,8 @@ namespace BandleTavern {
                 }
             }
 
-            string dataString = $"{{\"{partyLeader}\":{{\"partySize\":\"{partySize}\",\"{partyLeader}\":\"{partyRanks[0]}\"{partyData}}}}}";
-            string writeUrl = $"https://bandle-tavern.firebaseio.com/{missionTitle}.json?auth={FirebaseConnect.idToken}";
+            string dataString = $"{{\"{partyLeader}\":\"{partyRanks[0]}\"{partyData}}}";
+            string writeUrl = $"https://bandle-tavern.firebaseio.com/{missionTitle}/{partySize}/{partyLeader}.json?auth={FirebaseConnect.idToken}";
 
             using (var request = new HttpRequestMessage(new HttpMethod("PUT"), writeUrl)) {
                 request.Content = new StringContent(dataString, Encoding.UTF8, "application/x-www-form-urlencoded");
@@ -196,7 +196,7 @@ namespace BandleTavern {
          * returns the json data of multiple parties if successful with 200 OK HTTP status code
          */
         public static async Task<string> RetrieveData(string missionTitle) {
-            string getUrl = $"https://bandle-tavern.firebaseio.com/{missionTitle}.json?orderBy=\"partySize\"&endAt=4&limitToLast=30";
+            string getUrl = $"https://bandle-tavern.firebaseio.com/{missionTitle}.json?auth={FirebaseConnect.idToken}&orderBy=\"$key\"";
 
             using (var request = new HttpRequestMessage(new HttpMethod("GET"), getUrl)) {
                 // send request to firebase
@@ -219,8 +219,8 @@ namespace BandleTavern {
          * remove party from database
          * returns a JSON response containing null if successful with 200 OK HTTP status code
          */ 
-        public static async Task<string> RemoveParty(string missionTitle, string partyLeader) {
-            string deleteUrl = $"https://bandle-tavern.firebaseio.com/{missionTitle}/{partyLeader}.json?auth={FirebaseConnect.idToken}";
+        public static async Task<string> RemoveParty(string missionTitle, int partySize, string partyLeader) {
+            string deleteUrl = $"https://bandle-tavern.firebaseio.com/{missionTitle}/{partySize}/{partyLeader}.json?auth={FirebaseConnect.idToken}";
 
             using (var request = new HttpRequestMessage(new HttpMethod("DELETE"), deleteUrl)) {
                 // send request to firebase
