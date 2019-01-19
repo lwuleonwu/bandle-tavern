@@ -59,6 +59,8 @@ namespace BandleTavern.Tests {
             // Console.WriteLine(result);
 
             JObject parsedJson = JObject.Parse(result);
+            // need to retrieve FirebaseKey.dataKey from parsedJson
+            // is first field in parsedJson
             FirebaseKey firebase = (FirebaseKey) parsedJson.ToObject(typeof (FirebaseKey));
             Console.WriteLine(firebase.firebaseData);
         }

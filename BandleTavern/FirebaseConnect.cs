@@ -231,7 +231,7 @@ namespace BandleTavern {
             using (var request = new HttpRequestMessage(new HttpMethod("DELETE"), deleteUrl)) {
                 // send request to firebase
                 var response = await httpClient.SendAsync(request);
-                Console.WriteLine(response);
+                // Console.WriteLine(response);
 
                 var responseContent = response.Content;
                 var result = "";
