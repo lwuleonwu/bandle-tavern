@@ -60,6 +60,7 @@
     <Compile Include="Extensions\DependancyObjectExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="FirebaseConnect.cs" />
+    <Compile Include="FirebaseData.cs" />
     <Compile Include="Lcu\Cache\UserSummoner.cs" />
     <Compile Include="Lcu\LcuInteraction.cs" />
     <Compile Include="Options.cs" />

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace BandleTavern.Tests {
     [TestClass()]
@@ -41,7 +43,7 @@ namespace BandleTavern.Tests {
 
             int partySize2 = 2;
             string[] partyMembers2 = {"Dragon Husbando", "Tied and Knotted"};
-            string[] partyRanks2 = {"Unranked", "dont even use this one anymore lol"};
+            string[] partyRanks2 = {"Unranked", "dont even use this one anymore lol2"};
 
             await FirebaseConnect.SignIn("scarra");
             var result = await FirebaseConnect.Publish("First Win of the Day", partyMembers[0], partySize, partyMembers, partyRanks);
@@ -54,13 +56,18 @@ namespace BandleTavern.Tests {
         public async Task FirebaseRetrieveData() {
             await FirebaseConnect.SignIn("scarra");
             var result = await FirebaseConnect.RetrieveData("First Win of the Day");
-            Console.WriteLine(result);
+            // Console.WriteLine(result);
+
+            JObject parsedJson = JObject.Parse(result);
+            FirebaseKey firebase = (FirebaseKey) parsedJson.ToObject(typeof (FirebaseKey));
+            Console.WriteLine(firebase.firebaseData);
         }
 
         [TestMethod()]
         public async Task FirebaseRemoveParty() {
             await FirebaseConnect.SignIn("scarra");
-            var result = await FirebaseConnect.RemoveParty("First Win of the Day", 3, "Foxwefll");
+            string dataKey = "-LW_8qm72MmKiCStO3oh"; // retrieved manually from database
+            var result = await FirebaseConnect.RemoveParty("First Win of the Day", dataKey);
             Console.WriteLine(result);
         }
     }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.IO;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace BandleTavern {
     public static class FirebaseConnect {
@@ -30,7 +31,7 @@ namespace BandleTavern {
                 request.Content = new StringContent(dataString, Encoding.UTF8, "application/json");
 
                 var response = await httpClient.SendAsync(request);
-                Console.WriteLine(response);
+                // Console.WriteLine(response);
 
                 var responseContent = response.Content;
                 var result = "";
@@ -76,7 +77,7 @@ namespace BandleTavern {
 
                 // send request to firebase
                 var response = await httpClient.SendAsync(request);
-                Console.WriteLine(response);
+                // Console.WriteLine(response);
 
                 var responseContent = response.Content;
                 var result = "";
@@ -122,7 +123,7 @@ namespace BandleTavern {
 
                 // send request to firebase
                 var response = await httpClient.SendAsync(request);
-                Console.WriteLine(response);
+                // Console.WriteLine(response);
 
                 var responseContent = response.Content;
                 var result = "";
@@ -158,26 +159,31 @@ namespace BandleTavern {
          */
         public static async Task<string> Publish(string missionTitle, string partyLeader, int partySize, string[] partyMembers,
             string[] partyRanks) {
-            string partyData = "";
+
+            List<PartyMember> members = new List<PartyMember>();
 
             // format party member data if party is of two or more players
             if (partySize > 1) {
-                for (int i = 1; i < partySize; i++) {
+                for (int i = 0; i < partySize; i++) {
                     string partyMember = partyMembers[i];
                     string partyMemberRank = partyRanks[i];
-                    partyData += $",\"{partyMember}\":\"{partyMemberRank}\"";
+                    members.Add(new PartyMember() { memberName = partyMember, memberRank = partyMemberRank });
                 }
             }
 
-            string dataString = $"{{\"{partyLeader}\":\"{partyRanks[0]}\"{partyData}}}";
-            string writeUrl = $"https://bandle-tavern.firebaseio.com/{missionTitle}/{partySize}/{partyLeader}.json?auth={FirebaseConnect.idToken}";
+            PartyInfo newPartyInfo = new PartyInfo() { partyLeader = partyLeader, members = members };
+            Party newParty = new Party() { partyInfo = newPartyInfo };
+            FirebaseData newFirebaseData = new FirebaseData() { partySize = partySize, party = newParty };
 
-            using (var request = new HttpRequestMessage(new HttpMethod("PUT"), writeUrl)) {
+            var dataString = JsonConvert.SerializeObject(newFirebaseData);
+            string writeUrl = $"https://bandle-tavern.firebaseio.com/{missionTitle}.json?auth={FirebaseConnect.idToken}";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("POST"), writeUrl)) {
                 request.Content = new StringContent(dataString, Encoding.UTF8, "application/x-www-form-urlencoded");
 
                 // send request to firebase
                 var response = await httpClient.SendAsync(request);
-                Console.WriteLine(response);
+                // Console.WriteLine(response);
 
                 var responseContent = response.Content;
                 var result = "";
@@ -201,7 +207,7 @@ namespace BandleTavern {
             using (var request = new HttpRequestMessage(new HttpMethod("GET"), getUrl)) {
                 // send request to firebase
                 var response = await httpClient.SendAsync(request);
-                Console.WriteLine(response);
+                // Console.WriteLine(response);
 
                 var responseContent = response.Content;
                 var result = "";
@@ -219,8 +225,8 @@ namespace BandleTavern {
          * remove party from database
          * returns a JSON response containing null if successful with 200 OK HTTP status code
          */ 
-        public static async Task<string> RemoveParty(string missionTitle, int partySize, string partyLeader) {
-            string deleteUrl = $"https://bandle-tavern.firebaseio.com/{missionTitle}/{partySize}/{partyLeader}.json?auth={FirebaseConnect.idToken}";
+        public static async Task<string> RemoveParty(string missionTitle, string dataKey) {
+            string deleteUrl = $"https://bandle-tavern.firebaseio.com/{missionTitle}/{dataKey}.json?auth={FirebaseConnect.idToken}";
 
             using (var request = new HttpRequestMessage(new HttpMethod("DELETE"), deleteUrl)) {
                 // send request to firebase
