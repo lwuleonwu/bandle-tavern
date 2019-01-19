@@ -84,6 +84,15 @@
     <Compile Include="Wpf\Elements\OptionsPanel\OptionsPanel.xaml.cs">
       <DependentUpon>OptionsPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Wpf\Elements\PartyLists\Party.xaml.cs">
+      <DependentUpon>Party.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wpf\Elements\PartyLists\PartyLeader.xaml.cs">
+      <DependentUpon>PartyLeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wpf\Elements\PartyLists\PartyLists.xaml.cs">
+      <DependentUpon>PartyLists.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Wpf\Elements\Toolbar\ToolBar.xaml.cs">
       <DependentUpon>ToolBar.xaml</DependentUpon>
     </Compile>
@@ -130,6 +139,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Wpf\Elements\OptionsPanel\OptionsPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wpf\Elements\PartyLists\Party.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wpf\Elements\PartyLists\PartyLeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wpf\Elements\PartyLists\PartyLists.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -199,5 +220,6 @@
       <Name>LcuApiTavern</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -67,5 +67,15 @@ namespace BandleTavern
                 });
             }
         }
+
+        public void NewSummoner(LcuApiTavern.Plugins.LolSummoner.V1.CurrentSummoner summoner)
+        {
+            WindowBanner.MissionList.RefreshMissions();
+            if ((summoner != null) && (summoner.SummonerId > 0))
+            {
+                FirebaseConnect.SignIn(summoner.SummonerId.ToString());
+                bool test = true;
+            }
+        }
     }
 }

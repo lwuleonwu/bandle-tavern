@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="BandleTavern.Wpf.Elements.PartyLists.PartyLeader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BandleTavern.Wpf.Elements.PartyLists"
+             mc:Ignorable="d"
+             d:DesignHeight="35" d:DesignWidth="150">
+    <UserControl.Resources>
+        <Storyboard x:Key="PlayExpand" 
+                            Storyboard.TargetName = "ArrowViewBoxRotateTransform"
+                            Storyboard.TargetProperty="Angle">
+            <DoubleAnimation From="{Binding Path=Angle}" To="90" Duration="0:0:0.1"/>
+        </Storyboard>
+        <Storyboard x:Key="PlayContract" 
+                            Storyboard.TargetName = "ArrowViewBoxRotateTransform"
+                            Storyboard.TargetProperty="Angle">
+            <DoubleAnimation From="{Binding Path=Angle}" To="180" Duration="0:0:0.1"/>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid>
+        <Button Style="{StaticResource PartyListsLeader}" Click="Button_Click">
+            <Grid Name="ContentGrid">
+                <TextBlock Name="TextBoxContent"
+                   Text="" 
+                   Foreground="{StaticResource BrushTextTitle02}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   FontSize="16"
+                   Style="{StaticResource StyleTextBlockTitle}"
+                   Padding="5,0,0,0"
+                   />
+            </Grid>
+    </Button>
+
+    </Grid>
+</UserControl>

@@ -135,5 +135,13 @@ namespace BandleTavern.Wpf.Elements.Mission
                 });
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (_missionObject != null)
+            {
+                FirebaseConnect.RetrieveData(_missionObject.Title);
+            }
+        }
     }
 }
