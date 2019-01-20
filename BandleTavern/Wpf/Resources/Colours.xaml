@@ -18,8 +18,30 @@
     <Color x:Key="ColourUiHighlightHighlight">#b58d2f</Color>
     <Color x:Key="ColourUiBarBackground">#000000</Color>
     <Color x:Key="ColourUiBar">#ff8c1a</Color>
-    
+    <Color x:Key="ColourButtonHover">#40FFFFFF</Color>
+    <Color x:Key="ColourButtonPressed">#40000000</Color>
+    <Color x:Key="ColourContentBackground">#011E3F</Color>
 
+
+    <Color x:Key="ColourUnranked">#424242</Color>
+    <Color x:Key="ColourIron">#7f4c4c</Color>
+    <Color x:Key="ColourIron2">#726a6a</Color>
+    <Color x:Key="ColourBronze">#8e3e19</Color>
+    <Color x:Key="ColourSilver">#c7dee8</Color>
+    <Color x:Key="ColourSilver2">#b0b5b7</Color>
+    <Color x:Key="ColourGold">#d69200</Color>
+    <Color x:Key="ColourGold2">#9b6d09</Color>
+    <Color x:Key="ColourPlatinum">#a0f29b</Color>
+    <Color x:Key="ColourPlatinum2">#9caf9a</Color>
+    <Color x:Key="ColourDiamond">#8d6add</Color>
+    <Color x:Key="ColourDiamond2">#98a1d1</Color>
+    <Color x:Key="ColourMaster">#cb77e5</Color>
+    <Color x:Key="ColourMaster2">#be94cc</Color>
+    <Color x:Key="ColourGrandMaster">#9b0c26</Color>
+    <Color x:Key="ColourGrandMaster2">#726f6f</Color>
+    <Color x:Key="ColourChallenger">#16c0e2</Color>
+    <Color x:Key="ColourChallenger2">#d88806</Color>
+    
     <!--Brushes-->
     <SolidColorBrush x:Key="BrushTextTitle01" Color="{StaticResource ColourTextTitle01}"/>
     <SolidColorBrush x:Key="BrushTextTitle02" Color="{StaticResource ColourTextTitle02}"/>
@@ -48,4 +70,64 @@
     <SolidColorBrush x:Key="BrushConnectionErrorBackground" Color="{StaticResource ColourConnectionErrorBackground}"/>
     <SolidColorBrush x:Key="BrushUiBarBackground" Color="{StaticResource ColourUiBarBackground}"/>
     <SolidColorBrush x:Key="BrushUiBar" Color="{StaticResource ColourUiBar}"/>
+    <SolidColorBrush x:Key="BrushContentBackground" Color="{StaticResource ColourContentBackground}"/>
+
+
+    <SolidColorBrush x:Key="BrushButtonHover" Color="{StaticResource ColourButtonHover}"/>
+    <SolidColorBrush x:Key="BrushButtonPressed" Color="{StaticResource ColourButtonPressed}"/>
+
+
+    <LinearGradientBrush x:Key="BrushNoRank">
+        <GradientStop Color="Transparent" Offset="0"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="BrushUnranked">
+        <GradientStop Color="{StaticResource ColourUnranked}" Offset="0"/>
+        <GradientStop Color="{StaticResource ColourUnranked}" Offset="0.5"/>
+        <GradientStop Color="{StaticResource ColourUnranked}" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="BrushIron">
+        <GradientStop Color="{StaticResource ColourIron2}" Offset="0"/>
+        <GradientStop Color="{StaticResource ColourIron}" Offset="0.5"/>
+        <GradientStop Color="{StaticResource ColourIron2}" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="BrushBronze">
+        <GradientStop Color="{StaticResource ColourBronze}" Offset="0"/>
+        <GradientStop Color="{StaticResource ColourBronze}" Offset="0.5"/>
+        <GradientStop Color="{StaticResource ColourBronze}" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="BrushSilver">
+        <GradientStop Color="{StaticResource ColourSilver2}" Offset="0"/>
+        <GradientStop Color="{StaticResource ColourSilver}" Offset="0.5"/>
+        <GradientStop Color="{StaticResource ColourSilver2}" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="BrushGold">
+        <GradientStop Color="{StaticResource ColourGold2}" Offset="0"/>
+        <GradientStop Color="{StaticResource ColourGold}" Offset="0.5"/>
+        <GradientStop Color="{StaticResource ColourGold2}" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="BrushPlatinum">
+        <GradientStop Color="{StaticResource ColourPlatinum2}" Offset="0"/>
+        <GradientStop Color="{StaticResource ColourPlatinum}" Offset="0.5"/>
+        <GradientStop Color="{StaticResource ColourPlatinum2}" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="BrushDiamond">
+        <GradientStop Color="{StaticResource ColourDiamond2}" Offset="0"/>
+        <GradientStop Color="{StaticResource ColourDiamond}" Offset="0.5"/>
+        <GradientStop Color="{StaticResource ColourDiamond2}" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="BrushMaster">
+        <GradientStop Color="{StaticResource ColourMaster2}" Offset="0"/>
+        <GradientStop Color="{StaticResource ColourMaster}" Offset="0.5"/>
+        <GradientStop Color="{StaticResource ColourMaster2}" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="BrushGrandMaster">
+        <GradientStop Color="{StaticResource ColourGrandMaster2}" Offset="0"/>
+        <GradientStop Color="{StaticResource ColourGrandMaster}" Offset="0.5"/>
+        <GradientStop Color="{StaticResource ColourGrandMaster2}" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="BrushChallenger">
+        <GradientStop Color="{StaticResource ColourChallenger2}" Offset="0"/>
+        <GradientStop Color="{StaticResource ColourChallenger}" Offset="0.5"/>
+        <GradientStop Color="{StaticResource ColourChallenger2}" Offset="1"/>
+    </LinearGradientBrush>
 </ResourceDictionary>

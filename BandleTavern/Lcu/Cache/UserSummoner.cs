@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using BandleTavern.Wpf.Elements.WindowBanner;
 
 namespace BandleTavern.Lcu.Cache
 {
@@ -35,6 +36,11 @@ namespace BandleTavern.Lcu.Cache
                     if ((ActiveSummoner == null) || (summoner.SummonerId != ActiveSummoner.SummonerId))
                     {
                         //Different or new summoner detected.
+                        if (MainWindow.Active != null)
+                        {
+                            MainWindow.Active.NewSummoner(summoner);
+                        }
+
                     }
                     ActiveSummoner = summoner;
                 }
