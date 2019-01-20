@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.IO;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace BandleTavern {
     public static class FirebaseConnect {
@@ -201,10 +202,50 @@ namespace BandleTavern {
          * retrieves party lists from database
          * returns the json data of multiple parties if successful with 200 OK HTTP status code
          */
-        public static async Task<string> RetrieveData(string missionTitle) {
+        public static async Task<List<FirebaseKey>> RetrieveData(string missionTitle) {
             string getUrl = $"https://bandle-tavern.firebaseio.com/{missionTitle}.json?auth={FirebaseConnect.idToken}&orderBy=\"$key\"";
 
             using (var request = new HttpRequestMessage(new HttpMethod("GET"), getUrl)) {
+                // send request to firebase
+                var response = await httpClient.SendAsync(request);
+                // Console.WriteLine(response);
+
+                var responseContent = response.Content;
+                var result = "";
+
+                // get response from firebase
+                using (var reader = new StreamReader(await responseContent.ReadAsStreamAsync())) {
+                    result += await reader.ReadToEndAsync();
+                }
+
+                // parse data into convenient classes and put into list
+                JObject parsedJson = JObject.Parse(result);
+                List<FirebaseKey> firebaseKeys = new List<FirebaseKey>();
+
+                foreach (var entry in parsedJson) {
+                    FirebaseData firebaseData = (FirebaseData) entry.Value.ToObject(typeof(FirebaseData));
+                    FirebaseKey firebaseKey = new FirebaseKey { dataKey = entry.Key, firebaseData = firebaseData };
+
+                    firebaseKeys.Add(firebaseKey);
+                }
+
+                return firebaseKeys;
+            }
+        }
+
+        /*
+         * update party information
+         * requires FirebaseKey object containing updated party information and the unique data key
+         * returns the updated data if response was successful with 200 OK HTTP status code
+         */
+        public static async Task<string> UpdateParty(string missionTitle, FirebaseKey firebaseKey) {
+            string dataKey = firebaseKey.dataKey;
+            var dataString = JsonConvert.SerializeObject(firebaseKey.firebaseData);
+            string writeUrl = $"https://bandle-tavern.firebaseio.com/{missionTitle}/{dataKey}.json?auth={FirebaseConnect.idToken}";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("PUT"), writeUrl)) {
+                request.Content = new StringContent(dataString, Encoding.UTF8, "application/x-www-form-urlencoded");
+
                 // send request to firebase
                 var response = await httpClient.SendAsync(request);
                 // Console.WriteLine(response);

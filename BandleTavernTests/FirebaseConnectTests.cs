@@ -55,14 +55,31 @@ namespace BandleTavern.Tests {
         [TestMethod()]
         public async Task FirebaseRetrieveData() {
             await FirebaseConnect.SignIn("scarra");
-            var result = await FirebaseConnect.RetrieveData("First Win of the Day");
-            // Console.WriteLine(result);
+            List<FirebaseKey> keys = await FirebaseConnect.RetrieveData("First Win of the Day");
 
-            JObject parsedJson = JObject.Parse(result);
-            // need to retrieve FirebaseKey.dataKey from parsedJson
-            // is first field in parsedJson
-            FirebaseKey firebase = (FirebaseKey) parsedJson.ToObject(typeof (FirebaseKey));
-            Console.WriteLine(firebase.firebaseData);
+            foreach (var key in keys) {
+                Console.WriteLine(key.dataKey);
+                Console.WriteLine(key.firebaseData.partySize);
+            }
+        }
+
+        [TestMethod()]
+        public async Task FirebaseUpdateParty() {
+            PartyMember member1 = new PartyMember { memberName = "Zaichata", memberRank = "Unranked" };
+            PartyMember member2 = new PartyMember { memberName = "Foxwell", memberRank = "Gold 2" };
+            List<PartyMember> updatedMembers = new List<PartyMember>(new PartyMember[] { member1, member2 });
+
+            PartyInfo updatedPartyInfo = new PartyInfo { members = updatedMembers, partyLeader = updatedMembers[0].memberName };
+            Party updatedParty = new Party() { partyInfo = updatedPartyInfo };
+
+            FirebaseData updatedData = new FirebaseData { party = updatedParty, partySize = updatedMembers.Count };
+
+            // pulled manually from database
+            string dataKey = "-LWgz8jXd8WG1y-pkcvX";
+            FirebaseKey updatedFirebaseKey = new FirebaseKey { dataKey = dataKey, firebaseData = updatedData };
+
+            await FirebaseConnect.SignIn("scarra");
+            var result = await FirebaseConnect.UpdateParty("First Win of the Day", updatedFirebaseKey);
         }
 
         [TestMethod()]
