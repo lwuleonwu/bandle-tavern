@@ -136,11 +136,12 @@ namespace BandleTavern.Wpf.Elements.Mission
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             if (_missionObject != null)
             {
-                FirebaseConnect.RetrieveData(_missionObject.Title);
+                var task = FirebaseConnect.RetrieveData(_missionObject.Title);
+                PartyLists.PartyLists.Active.PopulateParties(await task);
             }
         }
     }

@@ -49,7 +49,6 @@ namespace BandleTavern
         public void InitModules()
         {
             Lcu.Cache.UserSummoner.ListenForSummoner();
-            WindowBanner.MissionList.RefreshMissions();
         }
 
         public void InitOptions()
@@ -70,12 +69,11 @@ namespace BandleTavern
 
         public void NewSummoner(LcuApiTavern.Plugins.LolSummoner.V1.CurrentSummoner summoner)
         {
-            WindowBanner.MissionList.RefreshMissions();
             if ((summoner != null) && (summoner.SummonerId > 0))
             {
                 FirebaseConnect.SignIn(summoner.SummonerId.ToString());
-                bool test = true;
             }
+            WindowBanner.MissionList.RefreshMissions();
         }
     }
 }

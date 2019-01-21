@@ -218,6 +218,10 @@ namespace BandleTavern {
                     result += await reader.ReadToEndAsync();
                 }
 
+                if (result == "null")
+                {
+                    return new List<FirebaseKey>();
+                }
                 // parse data into convenient classes and put into list
                 JObject parsedJson = JObject.Parse(result);
                 List<FirebaseKey> firebaseKeys = new List<FirebaseKey>();

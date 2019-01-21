@@ -20,9 +20,26 @@ namespace BandleTavern.Wpf.Elements.PartyLists
     /// </summary>
     public partial class PartyLists : UserControl
     {
+        public static PartyLists Active;
+
         public PartyLists()
         {
             InitializeComponent();
+            Active = this;
+        }
+
+        public void PopulateParties(List<FirebaseKey> fList)
+        {
+            WrapPanel.Dispatcher.Invoke(() =>
+            {
+                WrapPanel.Children.Clear();
+                foreach(FirebaseKey fk in fList)
+                {
+                    Party newParty = new Party();
+                    newParty.PartyMembers(fk.firebaseData.party.partyInfo.members);
+                    WrapPanel.Children.Add(newParty);
+                }
+            });
         }
     }
 }

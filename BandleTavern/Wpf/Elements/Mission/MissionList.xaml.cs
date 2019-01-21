@@ -42,17 +42,15 @@ namespace BandleTavern.Wpf.Elements.Mission
                 {
                     stackPanelMissions.Children.Clear();
                 });
-                if (value != null)
+                foreach (var i in value)
                 {
-                    foreach (var i in value)
+                    stackPanelMissions.Dispatcher.Invoke(() =>
                     {
-                        stackPanelMissions.Dispatcher.Invoke(() =>
+                        stackPanelMissions.Children.Add(new Mission()
                         {
-                            stackPanelMissions.Children.Add(new Mission() {
-                                MissionObject = i
-                            });
+                            MissionObject = i
                         });
-                    }
+                    });
                 }
             }
         }
@@ -62,6 +60,14 @@ namespace BandleTavern.Wpf.Elements.Mission
             ScrollViewer scv = (ScrollViewer)sender;
             scv.ScrollToHorizontalOffset(scv.HorizontalOffset - e.Delta);
             e.Handled = true;
+        }
+
+        private void UpdateDatabasePartyLists(string missionTitle)
+        {
+            foreach (var i in LcuApiTavern.Plugins.LolLobby.V2.Lobby.Members.Get())
+            {
+
+            }
         }
     }
 }

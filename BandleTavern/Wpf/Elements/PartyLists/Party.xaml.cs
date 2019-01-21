@@ -60,8 +60,8 @@ namespace BandleTavern.Wpf.Elements.PartyLists
             }
         }
         
-        /*
-        public void PartyMembers(FirebasePartyMember[] members)
+
+        public void PartyMembers(List<PartyMember> members)
         {
             int count = 0;
             string[] ranks = new string[5];
@@ -69,8 +69,8 @@ namespace BandleTavern.Wpf.Elements.PartyLists
             {
                 if (members[count] != null)
                 {
-                    PartyLeader.LeaderName = members[count].Name;
-                    ranks[count] = members[count].Rank;
+                    PartyLeader.LeaderName = members[count].memberName;
+                    ranks[count] = members[count].memberRank;
                 }
                 else
                 {
@@ -85,8 +85,8 @@ namespace BandleTavern.Wpf.Elements.PartyLists
                     string rank = "";
                     if (count < members.Count())
                     {
-                        name = members[count].Name;
-                        rank = members[count].Rank;
+                        name = members[count].memberName;
+                        rank = members[count].memberRank;
                     }
 
                     tb.Dispatcher.Invoke(() =>
@@ -111,7 +111,6 @@ namespace BandleTavern.Wpf.Elements.PartyLists
                 SlotRanks(ranks);
             }
         }
-        */
 
 
 
